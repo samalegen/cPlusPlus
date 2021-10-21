@@ -3,25 +3,20 @@
 using namespace std;
 
 int main() {
-	int a, b, factor;
+
+	int a, b;
 	cin >> a >> b;
-	int min;
 
-	if (a < b) {
-		min = a;
-	}
-	else {
-		min = b;
-	}
-
-
-	for(int i = 1; i <= min; ++i) {
-		if (a % i == 0 && b % i == 0) {
-			factor = i;
+	while(a > 0 && b > 0) {
+		if (a > b ) {
+			a = a % b;
+		}
+		else {
+			b = b % a;
 		}
 	}
-		
-	cout << factor << endl;
+
+	cout << a + b << endl;
 	
 	return 0;
 }
