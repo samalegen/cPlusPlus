@@ -4,10 +4,9 @@
 using namespace std;
 
 int main() {
-    vector<int> s = {}, w = {};
+    vector<int> w = {};
     int x;
     cin >> x;
-    s.push_back(x);
     w.push_back(x % 2);
     int n = x;
 
