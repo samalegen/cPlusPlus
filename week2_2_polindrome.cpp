@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool isPolindrome(string s){
+bool IsPalindrom(string s){
     string p;
     vector<char> v = {};
 
@@ -34,7 +34,7 @@ int main() {
     string str;
     cin >> str;
 
-    cout << isPolindrome(str);
+    cout << IsPalindrom(str);
 
     return 0;
 }
