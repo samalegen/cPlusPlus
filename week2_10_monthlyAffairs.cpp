@@ -10,7 +10,7 @@ void add(std::vector<std::vector<std::string>>& month) {
     month[i - 1].push_back(s);
 }
 
-void dump(const std::vector<std::vector<std::string>>& month)  {
+void dump1(const std::vector<std::vector<std::string>>& month)  {
     for (auto i : month) {
         if (i.size() == 0) {
             std::cout << 0 << std::endl;
@@ -22,6 +22,20 @@ void dump(const std::vector<std::vector<std::string>>& month)  {
             }
             std::cout << std::endl;
         }
+    }
+}
+void dump(const std::vector<std::vector<std::string>>& month)  {
+    int i;
+    std::cin >> i;
+    if (month[i -1].size() == 0) {
+        std::cout << 0 << std::endl;
+    }
+    else {
+        std::cout << month[i - 1].size();
+        for (auto k : month[i - 1]) {
+            std::cout << " " << k;
+        }
+        std::cout << std::endl;
     }
 }
 
