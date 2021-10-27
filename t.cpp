@@ -3,50 +3,63 @@
 #include <string>
 #include <vector>
 
-using namespace std;
-
-std::vector<char> toCharVector(const std::string& x) {
-    std::vector<char> result;
-    for (const char& i : x) {
-        result.push_back(i);
+void changeCapital(const std::string& a, const std::string& b, std::map<std::string, std::vector<std::string>>& m) {
+    bool flag;
+    std::vector<std::string> capitals;
+    if (m.count(a)) {
+        flag = false;
     }
-    return result;
-}
-
-
-bool buildCharCounters(const std::vector<char>& a, const std::vector<char>& b) {
-//    std::vector<char> vA = toCharVector(a);
-//    std::vector<char> vB = toCharVector(b);
-    std::map<char, int> m, c;
-    for (const char& i : a) {
-        ++m[i];
+    else {
+        flag = true;
     }
-    for (const char& i : b) {
-        ++c[i];
+    if (flag) {
+        std::cout << "Introduce new " << a << " with capital " << b << "\n";
+        capitals.push_back(b);
+        m[a] = capitals;
     }
-    if (c == m) {
-        return true;
-    }
-return false;
-}
-
-int main() {
-    int n;
-    std::cin >> n;
-    std::vector<std::string> result;
-    for (int i = 0; i < n; ++i) {
-        std::string a, b;
-        std::cin >> a >> b;
-        std::vector<char> m = toCharVector(a);
-        std::vector<char> c = toCharVector(b);
-        if (buildCharCounters(m, c)) {
-            result.push_back("YES");
-        }
-        else {
-            result.push_back("NO");
+    else {
+        for (const  auto& i : m) {
+            if (i.second.size() == 1) {
+                std::cout << "Country " << a << " has changed its capital from " << i.second[0] << " to " << b;
+                i.second.push_back(b);
+            }
+            else if (i.second.size() == 2) {
+                std::cout << "Country " << a << " hasn't changed its capital";
+            }
         }
     }
-    for (auto i : result) {
-        std::cout << i << "\n";
+//    std::vector<std::string> country
+//    m[a] = b;
+}
+void rename() {
+
+}
+void about() {
+
+}
+void dump() {
+
+}
+int main () {
+    int Q;
+    std::cin >> Q;
+    std::string operation;
+    std::map<std::string, std::vector<std::string>> countryCapital;
+    for (int i = 0; i < Q; ++i){
+        std::cin >> operation;
+        if (operation == "CHANGE_CAPITAL") {
+            std::string country, new_capital;
+            std::cin >> country >> new_capital;
+//            changeCapital(country, new_capital, countryCapital);
+        }
+        if (operation == "RENAME") {
+            rename();
+        }
+        if (operation == "ABOUT") {
+            about();
+        }
+        if (operation == "DUMP") {
+            dump();
+        }
     }
 }
