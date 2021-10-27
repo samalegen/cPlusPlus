@@ -2,8 +2,10 @@
 #include <map>
 #include <string>
 
-std::vector<char> toCharVector(const std::string& x) {
-    std::vector<char> result;
+using namespace std;
+
+std::vector<std::string> toCharVector(const std::string& x) {
+    std::vector<std::string> result;
     for (const auto& i : x) {
         result.pish_back(i);
         return result;
@@ -11,12 +13,16 @@ std::vector<char> toCharVector(const std::string& x) {
 
 
 bool buildCharCounters(const std::string& a, const std::string b) {
-    std::vector<char> vA = toCharVector(a);
-    std::vector<char> vB = toCharVector(b);
-    std::map<char, int> m:
-        for (const auto& i : m) {
+    std::vector<std::string> vA = toCharVector(a);
+    std::vector<std::string> vB = toCharVector(b);
+    std::map<std::string, int> m, c:
+    for (const std::string& i : vA) {
+        ++m[i];
+    }
+    for (const std::string& i : vB) {
+        ++m[i];
+    }
 
-        }
     
 }
 
