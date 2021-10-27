@@ -11,26 +11,23 @@ std::vector<char> toCharVector(const std::string& x) {
         result.push_back(i);
         return result;
 }
+}
 
 
 bool buildCharCounters(const std::string& a, const std::string& b) {
     std::vector<char> vA = toCharVector(a);
     std::vector<char> vB = toCharVector(b);
-    std::map<char, int> m, c:
+    std::map<char, int> m, c;
     for (const char& i : vA) {
         ++m[i];
     }
     for (const char& i : vB) {
         ++c[i];
     }
-    if (aV == aB) {
+    if (vA == vB) {
         return true;
     }
-    else {
-        return false;
-    }
-
-    
+return false;
 }
 
 int main() {
