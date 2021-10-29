@@ -1,65 +1,96 @@
 #include <iostream>
 #include <map>
-#include <string>
 #include <vector>
+#include <string>
 
-void changeCapital(const std::string& a, const std::string& b, std::map<std::string, std::vector<std::string>>& m) {
-    bool flag;
-    std::vector<std::string> capitals;
-    if (m.count(a)) {
-        flag = false;
-    }
-    else {
-        flag = true;
-    }
-    if (flag) {
-        std::cout << "Introduce new " << a << " with capital " << b << "\n";
-        capitals.push_back(b);
-        m[a] = capitals;
-    }
-    else {
-        for (const  auto& i : m) {
-            if (i.second.size() == 1) {
-                std::cout << "Country " << a << " has changed its capital from " << i.second[0] << " to " << b;
-                i.second.push_back(b);
-            }
-            else if (i.second.size() == 2) {
-                std::cout << "Country " << a << " hasn't changed its capital";
-            }
-        }
-    }
-//    std::vector<std::string> country
-//    m[a] = b;
-}
-void rename() {
+using namespace std;
 
-}
-void about() {
-
-}
-void dump() {
-
-}
-int main () {
+int main() {
+    map<string, vector<string>> busCourse;
     int Q;
-    std::cin >> Q;
-    std::string operation;
-    std::map<std::string, std::vector<std::string>> countryCapital;
-    for (int i = 0; i < Q; ++i){
-        std::cin >> operation;
-        if (operation == "CHANGE_CAPITAL") {
-            std::string country, new_capital;
-            std::cin >> country >> new_capital;
-//            changeCapital(country, new_capital, countryCapital);
-        }
-        if (operation == "RENAME") {
-            rename();
-        }
-        if (operation == "ABOUT") {
-            about();
-        }
-        if (operation == "DUMP") {
-            dump();
+    string operation;
+    cin >> Q;
+    for (int i = 0; i < Q; ++i) {
+        cin >> operation;
+        if (operation == "NEW_BUS") {
+            string bus, stop;
+            int stop_count;
+            vector<string> stops;
+            cin >> bus >> stop_count;
+            for (int i = 0; i < stop_count; ++i) {
+                cin >> stop;
+                stops.push_back(stop); 
+            }
+            busCourse[bus] = stops;
+        } else if (operation == "BUSES_FOR_STOP") {
+            string bus, stop;
+            cin >> stop;
+            vector<string> stops;
+            vector<string> buses;
+            bool flag = true;
+            for (auto i : busCourse) {
+                bus = i.first;
+                stops = i.second;
+                for (auto j : stops) {
+                    if (j == stop) {
+                        flag = false;
+                        buses.push_back(bus);
+                    }
+                }
+            }
+            if (flag) {
+                cout << "No stop" << endl;
+            }
+            for(auto k : buses) {
+                cout << k << " ";
+            }
+            cout << endl;
+        } else if (operation == "STOP_FOR_BUS") {
+            string bus, buses;
+            cin >> bus;
+            vector<string> stopForBus;
+            vector<string> stopBus;
+            map<string, vector<string>> result;
+            for (auto i : busCourse) {
+                buses = i.first;
+                stopBus = i.second;
+                if (buses == bus) {
+                    for (auto f : stopBus) {
+                        stopForBus.push_back(f); 
+                    }
+                    for (auto g : busCourse) {
+                        buses = g.first;
+                        stopBus = g.second;
+                        for (auto d : stopForBus) {
+                            for (auto s : stopBus) {
+                                if (d == s) {
+                                    result[buses] = stopForBus;
+                                }
+                            }
+                        }
+                
+                    }
+                }
+            }
+//            if (stopForBus.size() == 0) {
+//                cout << "No bus" << endl;
+//            } else if (stopForBus.size() == 1) {
+//                cout << "no interchange" << endl;
+//            } else {
+//                for (auto i : busCourse) {
+//                    stops = i.second;
+//                    if (i == bus) {
+//                        for (auto j : stops) {
+//                            stopBus.push_back(j);
+//                        }
+//                    }
+//                }
+//                for (auto i : stopBus) {
+//                    cout << "Stop " << i << ": ";
+//                    for
+//                }
+//            }
+                
         }
     }
 }

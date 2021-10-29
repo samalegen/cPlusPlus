@@ -1,4 +1,7 @@
-3
-eat tea
-find search
-master stream
+4
+NEW_BUS
+32 3
+a
+b
+c
+BUSES_FOR_STOP
