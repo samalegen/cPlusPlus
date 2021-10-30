@@ -63,7 +63,7 @@ int main() {
                         stopBus = g.second;
                         for (auto d : stopForBus) {
                             for (auto s : stopBus) {
-                                if (d == s) {
+                                if (d == s) { 
                                     result[buses] = stopForBus;
                                 }
                             }
