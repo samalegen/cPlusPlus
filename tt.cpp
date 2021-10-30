@@ -47,16 +47,16 @@ int main() {
             cout << endl;
         } else if (operation == "STOP_FOR_BUS") {
             string bus, buses;
-            cin >> bus;
-            vector<string> stopForBus;
+            cin >> bus; //получаем номер маршрута
+            vector<string> stopForBus; //хранит все остановки одного маршрута
             vector<string> stopBus;
-            map<string, vector<string>> result;
-            for (auto i : busCourse) {
-                buses = i.first;
-                stopBus = i.second;
-                if (buses == bus) {
-                    for (auto f : stopBus) {
-                        stopForBus.push_back(f); 
+            map<string, vector<string>> result;//для хранения результатов название остановки хранится в строке и маршруты проходящие через нее в векторе
+            for (auto i : busCourse) {//пробегаемся по парам ключ значение
+                buses = i.first;//ключ записываем в переменную string buses
+                stopBus = i.second;//вектор-значение остановок маршрута
+                if (buses == bus) {//если ключ который хранится в buses равен значению введенному пользователем хранящимся в bus то
+                    for (auto f : stopBus) {//пробегаемся циклом по вектору остановок маршрута
+                        stopForBus.push_back(f); //дописываем в конец вектора который был создан для хранения всех остановок одного маршрута
                     }
                     for (auto g : busCourse) {
                         buses = g.first;
