@@ -11,4 +11,5 @@ public:
     void displayMessage();
     void setteacherName(std::string);
     std::string getteacherName();
+    void determineClassAverage();
 };

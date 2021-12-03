@@ -10,5 +10,6 @@ int main() {
     myBook.setCourseName(nameOfCourse);
     std::cout << myBook.getCourseName() << std::endl;
     myBook.displayMessage();
+    myBook.determineClassAverage();
 
 }
