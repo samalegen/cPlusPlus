@@ -39,7 +39,7 @@ private:
 //   A a;
 
 public:
-   String() {}
+   String() = default;
    String(size_t n, char c): str(new char[n]), sz(n) {
       std::cout << "String " << sz << '\n';
       memset(str, c, n);
@@ -48,7 +48,7 @@ public:
    String(const String& s): str(new char[s.sz]), sz(s.sz) {
       memcpy(str, s.str, sz);
    }
-   void swap(String& s) {
+   void swap(String& s) {//определяем метод swap который использует swap из стандартной библиотеки и меняет поля местами
       std::swap(str, s.str);
       std::swap(sz, s.sz);
    }
@@ -56,8 +56,8 @@ public:
    String& operator=(const String& s) {
       //Copy-and-swap idiom
       String copy = s;
-      swap(copy);
-      return *this;
+      swap(copy);//вызываем определенный ранее метод swap
+      return *this;//this это указатель на себя а нам нужно вернуть сам объект т.е. ссылку на себя поэтому и разыменовываем *this
 /*      delete[] str;//Сначала освобождаем то что было
       str = new char[s.sz];
       sz = s.sz;
@@ -65,11 +65,13 @@ public:
       return *this;
 */
    }
+
    //Деструктор вызывается автоматически когда объект выходит из области видимости, т.е. уничтожается, происзводит нетривиальные действия освобождает захваченные ресурсы
    ~String() {
       std::cout << "~String " << sz << '\n';
       delete[] str;
    }
+  // ~String() = default;
 };
 
 int main() {
